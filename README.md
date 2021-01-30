@@ -10,18 +10,24 @@ Our recommendation is to use Discord or Zoom as your target endpoint, but implem
 
 ## Team 1
 ### Members
-*Mentor*: Devon Smart
-*Team Captain*: Sabra Bilodeau
+**Mentor**: Devon Smart
 
-*Front End Developers*: 
-- Adrian Herrera
-- Ulisses Ochoa
+**Team Captain**: Sabra Bilodeau
 
-*API Integration*:
-- Ani Khachatryan
+**Front End Developers** 
 
-*Back End Developers*:
-- Sabra Bilodeau
-- Miguel Hernandez
+Adrian Herrera
+
+Ulisses Ochoa
+
+**API Integration**
+
+Ani Khachatryan
+
+**Back End Developers**
+
+Sabra Bilodeau
+
+Miguel Hernandez
 
 ## ASL-Conferencing
