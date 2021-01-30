@@ -1,5 +1,4 @@
-// package signspeech
-// this is a reworking of this python package:
+// Package signspeech is a reworking of this python package:
 // https://github.com/Cuperino/Signspeech
 package signspeech
 
@@ -16,7 +15,7 @@ import (
 	speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1"
 )
 
-// func Parse {{{
+// Parse {{{
 //
 // Parses the string of transcribed audio
 func Parse(text string) {
@@ -39,7 +38,7 @@ func Parse(text string) {
 	}
 } // }}}
 
-// func Translate {{{
+// Translate {{{
 //
 // Iterates through the parsed and tokenized transcription, adding only the necessary words
 // to the the translation array that will be returned
@@ -170,7 +169,7 @@ func Translate(tokens []*prose.Token) []string {
 	return translation
 } // }}}
 
-// func Transcribe {{{
+// Transcribe {{{
 //
 // Sends the specified audio file to Google Speech to Text to be transcribed
 // Returns the translated text and speaker tag as well as any errors thrown
@@ -188,6 +187,31 @@ func Transcribe(audiofile string) (string, int32, error) {
 	if err != nil {
 		// We got an error when we tried to do that .. let's log the error and return
 		log.Printf("speech.NewClient: %v", err)
+		return txt, speaker, err
+	}
+
+	// Let's create a new audtio stream
+	stream, eerr := client.StreamingRecognize(ctx)
+	if err != nil {
+		// We got an error when we tried to do that .. let's log the error and return
+		log.Printf("client.StreamingRecognize: %v", err)
+		return txt, speaker, err
+	}
+
+	// Send initial configuration message to Speech-To-Text
+	if err := stream.Send(&speechpb.StreamingRecognizeRequest{
+		StreamingRequest: &speechpb.StreamingRecognizeRequest_StreamingConfig{
+			StreamingConfig: &speechpb.StreamingRecognitionConfig{
+				Config: &speechpb.RecognitionConfig{
+					Encoding:        speechpb.RecognitionConfig_LINEAR16,
+					SampleRateHertz: 16000,
+					LanguageCode:    "en-us",
+				},
+			},
+		},
+	}); err != nil {
+		// Initial configuration message failed ..
+		log.Printf("init config stream.Send: %v", err)
 		return txt, speaker, err
 	}
 
