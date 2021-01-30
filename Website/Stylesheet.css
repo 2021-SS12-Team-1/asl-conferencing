@@ -1,0 +1,15 @@
+body {
+    front-family: arial; 
+    background-color: rgb(0,0,0);
+    margin: 0;
+}
+.header {
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.img {
+    display: block;
+    margin-left: auto;
+    margin-right: 4%;
+}
