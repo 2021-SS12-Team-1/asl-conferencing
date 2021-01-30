@@ -6,8 +6,6 @@ community.
 Your application will take in text from a text document or closed
 captioning source/service and convert it to video-based ASL. 
 
-Our recommendation is to use Discord or Zoom as your target endpoint, but implementation will be left to your discretion.
-
 ## Team 1
 ### Members
 *Mentor*: Devon Smart
