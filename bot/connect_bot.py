@@ -43,7 +43,7 @@ async def send_message(ctx):
     ]
 
     response = random.choice(responses)
-    await message.channel.send(response)
+    await ctx.channel.send(response)
 
 # Create a command for a dice roll
 @bot.command(name='roll_dice', help='Simulates rolling dice.')
