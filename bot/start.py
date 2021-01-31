@@ -320,7 +320,7 @@ def main():
     tests = [
       "about", 
       "hello world",
-      # "I'm Javier.",
+      # "I am very tired",
       # "My name is Javier.",
       # "Bring your computer!",
       # "It's lunchtime!",
