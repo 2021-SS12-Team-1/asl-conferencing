@@ -1,0 +1,9 @@
+log.txt
+logs/
+.vscode/
+hist
+go
+config.json
+history
+music_cache/
+.idea
