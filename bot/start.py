@@ -18,6 +18,7 @@
 
 # You should have received a copy of the GNU General Public License
 # along with Signspeech.  If not, see <https://www.gnu.org/licenses/>.
+import re
 
 print ("""
 ╔═╗╦╔═╗╔╗╔╔═╗╔═╗╔═╗╔═╗╔═╗╦ ╦
@@ -317,37 +318,31 @@ def main():
   └─┘┴ ┴ ┴ ┴ ┴└─┘┴└─  └─┘┴  └─┘└─┘└─┘┴ ┴
     """)
 
-    tests = [
-      "about", 
-      "hello world",
+    
+    print("Enter a sentence.")
+    userInput=input()
+    print(userInput)
+    # resInput = re.sub(r'[^\w\s]','',userInput)
+    # print(resInput)
+    # resInput = resInput.lower()
+    # print(resInput)
+    # resInput = "".join(resInput)
+    # print(resInput)
+      # "hello world",
       # "I am very tired",
+      # "I'm Javier.",
+
       # "My name is Javier.",
       # "Bring your computer!",
       # "It's lunchtime!",
       # "Small dogs are cute",
       # "Chihuahuas are cute because they're small."
-    ]
 
-    if len(tests) == 0:
-      tests = tests + [ getSpeech() ]
+    parse(userInput)
 
-    if len(tests[0]) == 0:
-      print("No speech detected... Reattempting.")
-    else:
-      for text in tests:
-        print ("""
-  ┌─┐┌┐┌┌─┐┬ ┬ ┬┌─┐┌─┐  ┌─┐┌┐┌┌─┐┬  ┬┌─┐┬ ┬
-  ├─┤│││├─┤│ └┬┘└─┐├┤   ├┤ ││││ ┬│  │└─┐├─┤
-  ┴ ┴┘└┘┴ ┴┴─┘┴ └─┘└─┘  └─┘┘└┘└─┘┴─┘┴└─┘┴ ┴
-        """)
-
-        print("Text to process: ", text, "\n")
-
-        parse(text)
-
-        print('\nPress "Enter" to continue or any type anything else to exit.')
-        key = input()
-        if key != '':
-          flag = True
+    print('\nPress "Enter" to continue or type quit.')
+    key = input()
+    if key == 'quit':
+      break
 
 main()
